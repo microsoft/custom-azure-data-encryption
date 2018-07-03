@@ -1,0 +1,4 @@
+azure.common
+azure.keyvault
+cryptography
+pytest
