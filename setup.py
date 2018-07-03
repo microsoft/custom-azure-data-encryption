@@ -7,7 +7,7 @@ requirements = [
 ]
 
 setup(
-    name="azure-custom-encryption",
+    name="azure-custom-data-encryption",
     version="0.0.1",
     description="",
     long_description="",

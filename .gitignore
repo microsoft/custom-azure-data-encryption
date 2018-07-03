@@ -330,3 +330,5 @@ ASALocalRun/
 .mfractor/
 
 config/config.json
+.pytest_cache
+.tox
