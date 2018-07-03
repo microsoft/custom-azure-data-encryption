@@ -1,0 +1,10 @@
+{
+    "azure_tenant_id": "",
+    "azure_service_principal_client_id": "",
+    "azure_service_principal_secret": "",
+    "aes_key_length": 32,
+    "aes_iv_length": 16,
+    "azure_keyvault_url": "",
+    "azure_keyvault_key_name": "",
+    "azure_keyvault_key_version": ""
+}
