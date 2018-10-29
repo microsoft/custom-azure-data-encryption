@@ -59,7 +59,7 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
 
 
 ### Run Samples
-1. Clone Respository
+1. Clone Repository
 
 2. Create virtual environment using python 2.7 interpreter
     ```bash
@@ -107,7 +107,7 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
         "azure_keyvault_key_version": "<key version guid>",
         "azure_keyvault_url": "https://sample-kv.vault.azure.net",
         "azure_service_principal_client_id": "<service principal client id>",
-        "azure_service_principal_secret": "<service pricipal secret>",
+        "azure_service_principal_secret": "<service principal secret>",
         "azure_tenant_id": "<azure tenant id>"
     }
     ```
