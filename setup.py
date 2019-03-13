@@ -12,7 +12,7 @@ setup(
     description="",
     long_description="",
     url="",
-    packages=find_packages(include=["app"]),
+    packages=find_packages(include=["azure_encryption_helper"]),
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",

@@ -1,5 +1,4 @@
 from azure.keyvault import KeyVaultClient
-from azure.common.credentials import ServicePrincipalCredentials
 
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric import padding
@@ -13,27 +12,19 @@ class AESKeyWrapper:
     Uses Azure KeyVault API to unwrap the key.
     """
 
-    def __init__(self, vault, client_id, secret, tenant, key_name, key_version):
+    def __init__(self, vault, credentials, key_name, key_version):
         """
         Wrapper constructor.
 
         :param str vault: Azure KeyVault url.
-        :param str client_id: Azure Client Id.
-        :param str secret: Azure Client secret.
-        :param str tenant: Azure tenant id.
+        :param str credentials: Credentials needed for the KV client to connect to Azure.
         :param str key_name: Azure KeyVault key name.
         :param str key_version: Azure KeyVault key version.
         """
         self._key_name = key_name
         self._key_version = key_version
         self._vault = vault
-        self._client_id = client_id
-        self._secret = secret
-        self._tenant = tenant
-        self._credentials = ServicePrincipalCredentials(
-            client_id=self._client_id,
-            secret=self._secret,
-            tenant=self._tenant)
+        self._credentials = credentials
         self.kvclient = KeyVaultClient(self._credentials)
 
     def wrap_aes_key_local(self, aes_key, public_key):
