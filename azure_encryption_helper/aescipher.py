@@ -39,7 +39,7 @@ class AESCipher:
         iv = urandom(self._iv_length)
         self._cipher.mode = modes.CBC(iv)
         encryptor = self._cipher.encryptor()
-        ct = encryptor.update(content) + encryptor.finalize()
+        ct = encryptor.update(content.encode('utf-8')) + encryptor.finalize()
         return iv + ct
 
     def decrypt(self, content):
@@ -55,6 +55,7 @@ class AESCipher:
         self._cipher.mode = modes.CBC(iv)
         decryptor = self._cipher.decryptor()
         content = decryptor.update(content[self._iv_length:]) + decryptor.finalize()
+        content = content.decode('utf-8')
         return content.rstrip(self.padding_value)
 
     def encrypt_file(self, in_filename):
