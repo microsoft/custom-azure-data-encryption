@@ -5,7 +5,9 @@ Azure Custom Data Encryption Library provides a light weight SDK for securing yo
 
 ## Installation
 
-TODO: pip command!
+``` bash
+pip install git+https://github.com/microsoft/custom-azure-data-encryption.git
+```
 
 ## High Level Overview
 
@@ -19,42 +21,22 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
 
 ### Quick Start
 
-1. Just authenticate into Azure Key Vault by initializing `AESKeyWrapper`
-    ```python
-    wrapper = AESKeyWrapper(
-        vault = azure_keyvault_url,
-        client_id = azure_service_principal_client_id,
-        secret = azure_service_principal_secret,
-        tenant = azure_tenant_id,
-        key_name = azure_keyvault_key_name,
-        key_version = azure_keyvault_key_version)
-    ```
+You can look at `samples\demo.py` for the reference on how to use this library.
 
-2. Generate or use your own symmetric key
-    ```python
-    aes_key = os.urandom(aes_key_length) # 32 bytes
-    ```
+## Tests
 
-3. Encrypt your symmetric key and save for later use
-    ```python
-    wrapper.wrap_aes_key_local(aes_key, wrapper.get_public_key())
-    ```
+To run tests:
 
-4. Create a cipher and encrypt your data
-    ```python
-    cipher = AESCipher(wrapper.unwrap_aes_key(encrypted_keys), config.aes_iv_length)
-    encrypted_data = cipher.encrypt(sample_data)
-    ```
-
-5. Further down the line, you can still use the cipher to decrypt.
-    ```python
-    cipher.decrypt(encrypted_data)
-    ```
+```bash
+    pip install .
+    pip install -r requirements.txt
+    pytest
+```
 
 ## Samples
 
 ### Prerequisites
-- `python 2.7`
+- `python 2.7 or 3.6+`
 - `virtualenv` for managing python packages between projects.
 
 
@@ -68,11 +50,7 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
 
 3. Install Dependencies
     ```bash
-    pip install -r requirements.txt
-    ```
-4. Create a copy of `config.example.json` and name it `config.json`
-    ```bash
-    cp config/config.example.json config/config.json
+    pip install .
     ```
 
 5. Log in and use the Azure CLI
@@ -87,7 +65,7 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
     ```
 
 7. Provision a `Service Principal` and `Key Vault` by running `deploy.sh`
-    - Copy the config generated at the end of the script into `config.json`
+    - Run `export` commands printed by the script when finished.
     ```bash
     bash scripts/deploy.sh
     Enter resource group name:
@@ -99,23 +77,17 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
 
     ...
 
-    place the following in your config.json
-    {
-        "aes_iv_length": 16,
-        "aes_key_length": 32,
-        "azure_keyvault_key_name": "sample-key",
-        "azure_keyvault_key_version": "<key version guid>",
-        "azure_keyvault_url": "https://sample-kv.vault.azure.net",
-        "azure_service_principal_client_id": "<service principal client id>",
-        "azure_service_principal_secret": "<service pricipal secret>",
-        "azure_tenant_id": "<azure tenant id>"
-    }
+    export AZURE_TENANT_ID=<guid>
+    export AZURE_CLIENT_ID=<guid>
+    export AZURE_CLIENT_SECRET=<guid>
+    export VAULT_URI=<key_vault_uri>
+    export KEY_NAME=sample-key
+    export KEY_VERSION=<key_version>
     ```
 
 8. Run Sample from root directory
     ```bash
-    PYTHONPATH=. python samples/encrypt_key.py
-    PYTHONPATH=. python samples/simple_encrypt.py
+    python samples/demo.py
     ```
 
 # Contributing
