@@ -79,5 +79,8 @@ class AESKeyWrapper:
         """ Helper function to convert bytes array to int. """
         result = 0
         for b in bytes:
-            result = result * 256 + ord(b)
+            try:
+                result = result * 256 + b
+            except TypeError:
+                result = result * 256 + ord(b)
         return result

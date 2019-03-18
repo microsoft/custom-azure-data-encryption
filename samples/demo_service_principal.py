@@ -22,8 +22,8 @@ encryptor_a.configure_wrapper(vault_uri, credentials, key_name, key_version)
 
 encrypted_message = encryptor_a.encrypt(message)
 wrapped_key = encryptor_a.get_wrapped_key()
-print("Encrypted message:" + encrypted_message)
-print("Wrapped_key:" + wrapped_key)
+print("Encrypted message:" + str(encrypted_message))
+print("Wrapped_key:" + str(wrapped_key))
 
 print("Transferring wrapped key and encrypted message...")
 
