@@ -5,7 +5,7 @@ Azure Custom Data Encryption Library provides a light weight SDK for securing yo
 
 ## Installation
 
-``` bash
+```bash
 pip install git+https://github.com/microsoft/custom-azure-data-encryption.git
 ```
 
@@ -21,7 +21,7 @@ This encryption library seemlessly ties into Azure Key Vault for easy use!
 
 ### Quick Start
 
-You can look at `samples\demo.py` for the reference on how to use this library.
+You can look at [demo.py](./samples/demo.py) for the reference on how to use this library.
 
 ## Tests
 

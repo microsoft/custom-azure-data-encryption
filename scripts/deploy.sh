@@ -49,6 +49,3 @@ echo "export AZURE_CLIENT_SECRET=$client_secret"
 echo "export VAULT_URI=$keyvault_url"
 echo "export KEY_NAME=$key_name"
 echo "export KEY_VERSION=$key_version"
-
-#echo -e "\nPlace the following in your config.json:"
-#echo '{"azure_tenant_id": "'$tenant_id'", "azure_service_principal_client_id":"'$client_id'", "azure_service_principal_secret":"'$client_secret'", "aes_key_length":32, "aes_iv_length":16, "azure_keyvault_url": "'$keyvault_url'", "azure_keyvault_key_name": "'$key_name'", "azure_keyvault_key_version": "'$key_version'"}' | python -m json.tool
