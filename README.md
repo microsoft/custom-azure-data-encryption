@@ -41,7 +41,7 @@ To run tests:
 
 
 ### Run Samples
-1. Clone Respository
+1. Clone Repository
 
 2. Create virtual environment using python 2.7 interpreter
     ```bash
