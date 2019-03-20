@@ -24,11 +24,8 @@ message = 'hello custom data encryption!'
 print("Original message:" + message)
 
 # Create Encryptor
-encryptor_a = Encryptor()
-
-# Configure KeyVault parameters
 # credentials can be ServicePrincipalCrendentials or MSIAuthentication object
-encryptor_a.configure_wrapper(vault_uri, credentials, key_name, key_version)
+encryptor_a = Encryptor.create_with_raw_key(vault_uri, credentials, key_name, key_version)
 
 # Encrypt messages
 encrypted_message = encryptor_a.encrypt(message)
@@ -44,15 +41,7 @@ print("Wrapped_key:" + str(wrapped_key))
 print("Transferring wrapped key and encrypted message...")
 
 # Create another Encryptor
-encryptor_b = Encryptor()
-
-# Configure KeyVault parameters
-# credentials can be ServicePrincipalCrendentials or MSIAuthentication object
-encryptor_b.configure_wrapper(vault_uri, credentials, key_name, key_version)
-
-# Configure AES key with wrapped version
-# Encryptor will use KeyVault to unwrap the key
-encryptor_b.set_wrapped_key(wrapped_key)
+encryptor_b = Encryptor.create_with_wrapped_key(vault_uri, credentials, key_name, key_version, wrapped_key)
 
 # Now you can decrypt the message
 decrypted_message = encryptor_b.decrypt(encrypted_message)
