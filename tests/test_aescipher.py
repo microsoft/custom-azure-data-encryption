@@ -2,7 +2,7 @@ import pytest
 import os
 import random
 
-from app.aescipher import AESCipher
+from azure_encryption_helper.aescipher import AESCipher
 
 aes_key_length = 32
 aes_iv_length = 16

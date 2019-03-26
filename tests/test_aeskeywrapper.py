@@ -1,6 +1,6 @@
 import pytest
 
-from app.aeskeywrapper import AESKeyWrapper
+from azure_encryption_helper.aeskeywrapper import AESKeyWrapper
 
 from mock import Mock
 from os import urandom
